@@ -7,15 +7,15 @@ function ReusableForm(props) {
       <form onSubmit={props.formSubmissionHandler}>
         <input
           type='text'
-          name='name'
-          placeholder='Event Name' />
+          name='title'
+          placeholder='Event Title' />
         <input
           type='text'
           name='location'
           placeholder='Location' />
         <input 
         type='text'
-        name='date'
+        name='eventDate'
         placeholder='Event Date' />
         <textarea
           name='description'
