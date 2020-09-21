@@ -1,68 +1,77 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# _Event Planner_
 
-## Available Scripts
+<!-- #### _A React Redux application for kombucha store to track their kegs._  -->
 
-In the project directory, you can run:
+#### _September 21, 2020 | Fatma C. Dogan_
 
-### `yarn start`
+## Description
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+### Component Diagram
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img src="diagram.png" width="550px" />
 
-### `yarn build`
+## Specification user stories:
+* A user should be able to create, update and delete an event. All events should be stored in the database.
+* A user should be able to fill out and submit events. Event results should be submitted to the database. (An event result can be associated to a event by mimicking a one-to-many relationship.)
+* A user should be able to sign up, sign in, and sign out.
+* A user should have their own dashboard which lists the events they've created.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Setup/Installation Requirements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Node install
 
-### `yarn eject`
+###### For macOS:
+_If Homebrew is not installed on your computer already, then install Homebrew by entering the following two commands in Terminal:_
+* $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+* $ echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+_Install Git with the following command:_
+* $ brew install git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_Next, install Node.js by entering the following command in Terminal:_
+* $ brew install node
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+###### For Windows:
+_Please visit the [Node.js website](https://nodejs.org/en/download/) for installation instructions._
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Install this application
 
-## Learn More
+_Clone this repository via Terminal using the following commands:_
+```
+cd desktop
+git clone https://github.com/fc-dogan/Taproom-Redux
+cd Taproom-Redux
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+_Next, install npm at the project's root directory, and start the server:_
+```
+npm install
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+_If everything is correct, the localhost site should open automatically_
 
-### Code Splitting
+_View the contents of this project by opening in VSCode:_
+```
+code .
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
+## Technologies Used
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* _React_
+* _Redux_
+* _Jest_
+* _JavaScript_
+* _WebPack_
+* _CSS_
+* _Git_
 
-### Making a Progressive Web App
+### License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+*This webpage is licensed under the MIT license.*
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Copyright &copy; 2020 **_Fatma C. Dogan_**
