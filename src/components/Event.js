@@ -1,7 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useFirestore} from 'react-redux-firebase';
+
 
 function Event(props){
+
+  const firestore = useFirestore();
+  
+  const handleDeletingEvent =() =>{
+    return firestore.delete({collection: 'events', doc: props.id });
+  }
+
   return (
     <React.Fragment>
       <div onClick = {() => props.whenEventClicked(props.id)}>
@@ -11,7 +20,7 @@ function Event(props){
         <p><em>{props.description}</em></p>
         <p><em>{props.formattedWaitTime}</em></p>
       </div>
-      <hr/>
+      <button onClick={handleDeletingEvent}>Delete</button>
     </React.Fragment>
   );
 }
