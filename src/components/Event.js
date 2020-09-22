@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useFirestore} from 'react-redux-firebase';
-
+import { Link } from 'react-router-dom';
 
 function Event(props){
 
@@ -21,6 +21,9 @@ function Event(props){
         <p><em>{props.formattedWaitTime}</em></p>
       </div>
       <button onClick={handleDeletingEvent}>Delete</button>
+      {/* <button>
+      <Link to='editevent'>Edit </Link>
+      </button> */}
     </React.Fragment>
   );
 }

@@ -36,16 +36,37 @@ import { connect } from 'react-redux';
     this.setState({editing: true});
   }
 
+  handleClickToListfromDetail = () =>{
+    const { dispatch } = this.props;
+    const action2 = { type: "UNSELECT_EVENT"}
+    dispatch(action2);
+  }
+
+  
   render() {
-    return (
+    let currentlyVisibleState = null;
+    if (this.state.editing ) {      
+      currentlyVisibleState =  <EditEventForm selectedEvent={this.props.selectedEvent}/>;
+    }  else if (this.props.selectedEvent!= null) {
+      currentlyVisibleState=
       <div>
-        <p>Controller</p>
+        <EventDetails selectedEvent= {this.props.selectedEvent}
+        onClickingEdit={this.handleEditClicking} />
+        <button onClick ={this.handleClickToListfromDetail} >Return to List</button>
+      </div> 
+    } else {
+      currentlyVisibleState = <div>
         <NewEventForm />
         <EventList onEventSelection={this.handleChangingSelectedEvent}/>
         <Dashboard />
-        <EditEventForm selectedEvent={this.props.selectedEvent}/>
-        <EventDetails selectedEvent= {this.props.selectedEvent}
-        onClickingEdit={this.handleEditClicking} />
+        
+      </div>
+    }
+
+    return (
+      <div>
+        <p>Controller</p>
+        {currentlyVisibleState}
       </div>
     )
   }

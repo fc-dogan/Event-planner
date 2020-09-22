@@ -12,7 +12,7 @@ const currentState = {
 
 describe('selectEventReducer', () => {
   test('Should return default state if no action type ispassed to the reducer', () =>{
-    expect(selecetEventReducer('', {type:null})).toEqual('');
+    expect(selecetEventReducer(null, {type:null})).toEqual(null);
   });
   test('Should successfully set selected event', () =>{
    action = {

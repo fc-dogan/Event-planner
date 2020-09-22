@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
+
 
 function EventDetails(props) {
   const { selectedEvent, onClickingEdit } =props;
@@ -10,7 +12,9 @@ function EventDetails(props) {
       <h3> {selectedEvent.location} </h3>
       <p>{selectedEvent.eventDate} </p>
       <p><em>{selectedEvent.description}</em></p>
-      <button onClick={ onClickingEdit }>Update Event</button>
+      <button onClick={ onClickingEdit() }>
+      <Link to='editevent'>Edit </Link>
+     </button>
       {/* <button onClick={()=> onClickingDelete(ticket.id) }>Close Ticket</button>
       <hr/> */}
       {/* <button onClick={selectedEvent.onClickingEditIssue}>Edit Issue</button>

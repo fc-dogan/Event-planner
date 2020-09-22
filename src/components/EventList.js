@@ -3,7 +3,7 @@ import Event from './Event';
 import PropTypes from "prop-types";
 import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
-
+import { Link } from 'react-router-dom'
 function EventList(props) {
 
   useFirestoreConnect([
@@ -17,7 +17,7 @@ function EventList(props) {
       <React.Fragment>
         {events.map((event) => {
           return <Event
-          whenEventClicked= {props.onEventSelection }
+            whenEventClicked= {props.onEventSelection }
             title={event.title}
             location={event.location}
             eventDate= {event.eventDate}
@@ -25,7 +25,6 @@ function EventList(props) {
             formattedWaitTime={event.formattedWaitTime}
             id={event.id}
             key={event.id}
-            whenEditClicked ={props.onClickingEdit}
             />
         })}
       </React.Fragment>
@@ -39,6 +38,8 @@ function EventList(props) {
   }
 }
     
+{/* <Link to={'/event/' + event.id} key={event.id}> </Link */}
+
 
 //   return (
 //     <div className='event-list'>
@@ -52,8 +53,7 @@ function EventList(props) {
 // }
 
 EventList.propTypes = {
-  onEventSelection: PropTypes.func,
-  onClickingEdit:PropTypes.func
+  onEventSelection: PropTypes.func
 };
 
 export default EventList;
