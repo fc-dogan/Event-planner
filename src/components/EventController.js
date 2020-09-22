@@ -35,6 +35,7 @@ import { withFirestore } from 'react-redux-firebase'
         <NewEventForm />
         <EventList onEventSelection={this.handleChangingSelectedEvent}/>
         <Dashboard />
+        <EditEventForm selectedEvent={this.state.selectedEvent}/>
       </div>
     )
   }

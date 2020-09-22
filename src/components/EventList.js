@@ -24,7 +24,9 @@ function EventList(props) {
             description={event.description}
             formattedWaitTime={event.formattedWaitTime}
             id={event.id}
-            key={event.id}/>
+            key={event.id}
+            whenEditClicked ={props.onClickingEdit}
+            />
         })}
       </React.Fragment>
     )
@@ -50,7 +52,8 @@ function EventList(props) {
 // }
 
 EventList.propTypes = {
-  onEventSelection: PropTypes.func
+  onEventSelection: PropTypes.func,
+  onClickingEdit:PropTypes.func
 };
 
 export default EventList;
