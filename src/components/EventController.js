@@ -3,6 +3,7 @@ import Dashboard from './Dashboard';
 import NewEventForm from './NewEventForm';
 import EditEventForm from './EditEventForm';
 import EventList from './EventList';
+import EventDetails from './EventDetails';
 import { withFirestore } from 'react-redux-firebase'
 import { connect } from 'react-redux';
 
@@ -17,16 +18,22 @@ import { connect } from 'react-redux';
 
 
   handleChangingSelectedEvent = (id) => {
+    const { dispatch } = this.props;
     this.props.firestore.get({collection: 'events', doc: id}).then((event) => {
-      const firestoreEvent = {
+      const action = {
+        type: "UPDATE_SELECTED",
         title: event.get("title"),
         location: event.get("location"),
         eventDate: event.get("eventDate"),
         description: event.get("description"),
         id: event.id
       }
-      this.setState({selectedEvent: firestoreEvent });
+      dispatch(action);
     });
+  }
+
+  handleEditClicking =() =>{
+    this.setState({editing: true});
   }
 
   render() {
@@ -36,7 +43,9 @@ import { connect } from 'react-redux';
         <NewEventForm />
         <EventList onEventSelection={this.handleChangingSelectedEvent}/>
         <Dashboard />
-        <EditEventForm selectedEvent={this.state.selectedEvent}/>
+        <EditEventForm selectedEvent={this.props.selectedEvent}/>
+        <EventDetails selectedEvent= {this.props.selectedEvent}
+        onClickingEdit={this.handleEditClicking} />
       </div>
     )
   }
