@@ -4,12 +4,13 @@ import NewEventForm from './NewEventForm';
 import EditEventForm from './EditEventForm';
 import EventList from './EventList';
 import { withFirestore } from 'react-redux-firebase'
+import { connect } from 'react-redux';
 
  class EventController extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedEvent: null,
+      // selectedEvent: null,
       editing: false
     };
   }
@@ -40,5 +41,12 @@ import { withFirestore } from 'react-redux-firebase'
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    selectedEvent: state.selectedEvent
+  }
+}
+
+EventController = connect(mapStateToProps)(EventController);
 
 export default  withFirestore(EventController);
