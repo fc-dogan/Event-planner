@@ -4,19 +4,14 @@ import NewEventForm from './NewEventForm';
 import EditEventForm from './EditEventForm';
 import EventList from './EventList';
 import EventDetails from './EventDetails';
-import { withFirestore } from 'react-redux-firebase'
 import { connect } from 'react-redux';
+import { withFirestore, isLoaded } from 'react-redux-firebase';
+import { Link } from 'react-router-dom';
 
  class EventController extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // selectedEvent: null,
-      // editing: false
-    };
   }
-
-
   handleChangingSelectedEvent = (id) => {
     const { dispatch } = this.props;
     this.props.firestore.get({collection: 'events', doc: id}).then((event) => {
@@ -47,24 +42,48 @@ import { connect } from 'react-redux';
   
   render() {
     let currentlyVisibleState = null;
-    if (this.props.editingEvent ) {      
-      currentlyVisibleState =  <EditEventForm selectedEvent={this.props.selectedEvent}
-      onEditTicket ={this.handleEditClicking}/>;
-    }  else if (this.props.selectedEvent!= null) {
-      currentlyVisibleState=
-      <div>
-        <EventDetails selectedEvent= {this.props.selectedEvent}
-        onClickingEdit={this.handleEditClicking} />
-        <button onClick ={this.handleClickToListfromDetail} >Return to List</button>
-      </div> 
-    } else {
-      currentlyVisibleState = <div>
-        <NewEventForm />
-        <EventList onEventSelection={this.handleChangingSelectedEvent}/>
-        <Dashboard />
-        
-      </div>
+    const auth = this.props.firebase.auth();
+    if (!isLoaded(auth)) {
+      return (
+        <React.Fragment>
+          <h1>Loading...</h1>
+        </React.Fragment>
+      )
     }
+    if ((isLoaded(auth)) && (auth.currentUser == null)) {
+      return (
+        <React.Fragment>
+          <h2>You must be signed in to access the queue.</h2>
+          <button><Link to='/signin'>Sign In</Link></button>
+          <button><Link to='/signup'>Sign up</Link></button>
+        </React.Fragment>
+      )
+    } 
+    if ((isLoaded(auth)) && (auth.currentUser != null)) {
+      if (this.props.editingEvent ) {      
+        currentlyVisibleState =  <EditEventForm selectedEvent={this.props.selectedEvent}
+        onEditTicket ={this.handleEditClicking}/>;
+      }  else if (this.props.selectedEvent!= null) {
+        currentlyVisibleState=
+        <div>
+          <EventDetails selectedEvent= {this.props.selectedEvent}
+          onClickingEdit={this.handleEditClicking} />
+          <button onClick ={this.handleClickToListfromDetail} >Return to List</button>
+        </div> 
+      } else {
+        currentlyVisibleState =
+        <div className='main container'>
+        <div className='row'>
+          <div className='col s12 m6'>
+            <EventList onEventSelection={this.handleChangingSelectedEvent}/>
+          </div>
+          <div className='col s12 m5 offset-m1'>
+              <NewEventForm />
+          </div>
+        </div>
+      </div>
+      }
+    } 
 
     return (
       <div>

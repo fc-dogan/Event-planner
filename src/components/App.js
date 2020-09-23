@@ -7,6 +7,8 @@ import EventDetails from './EventDetails';
 import EventList from './EventList';
 import EditEventForm from './EditEventForm';
 import Signin from './Signin';
+import Signup from './Signup';
+import Signout from './Signout';
 
 function App() {
   return (
@@ -16,10 +18,16 @@ function App() {
         <Route path="/signin">
           <Signin />
         </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/signout">
+          <Signout />
+        </Route>
         <Route path="/newevent">
           <NewEventForm />
         </Route>
-        <Route path="/event/:id">
+        {/* <Route path="/event/:id">
           <EventDetails />
         </Route>
         <Route path="/eventlist">
@@ -27,7 +35,7 @@ function App() {
         </Route>
         <Route path="/editevent">
           <EditEventForm />
-        </Route>
+        </Route> */}
         <Route path="/">
           <EventController />
         </Route>

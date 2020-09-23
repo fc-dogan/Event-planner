@@ -1,9 +1,8 @@
 import React from 'react';
-import ReusableForm from './ReusableForm';
 import PropTypes from 'prop-types';
 import { useFirestore } from 'react-redux-firebase'
 
-function NewEventForm(props) {
+function NewEventForm() {
 
   const firestore = useFirestore();
 
@@ -22,11 +21,26 @@ function NewEventForm(props) {
   }
   return (
     <React.Fragment>
-    <ReusableForm 
-      formSubmissionHandler={addEventToFirestore}
-      buttonText="Add!" />
+      <form onSubmit={addEventToFirestore}>
+        <input
+          type='text'
+          name='title'
+          placeholder='Event Title' />
+        <input
+          type='text'
+          name='location'
+          placeholder='Location' />
+        <input 
+        type='text'
+        name='eventDate'
+        placeholder='Event Date' />
+        <textarea
+          name='description'
+          placeholder='Describe your event.' />
+        <button type='submit'>Add</button>
+      </form>
   </React.Fragment>
   )
 }
 
-export default NewEventForm
+export default NewEventForm;

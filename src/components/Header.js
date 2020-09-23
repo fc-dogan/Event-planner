@@ -1,19 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
  function Header() {
   return (
-    <React.Fragment>
-      <h1>Event Planner</h1>
-      <ul>
-        <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/signin'>Sign In</Link>
-        </li>
-      </ul>
-    </React.Fragment>
+      <nav>
+        {/* <h1>Event Planner</h1> */}
+        <ul>
+          <li>
+            <NavLink to='/'>Home</NavLink>
+          </li>
+          <li>
+            <NavLink to='/signin'>Sign In</NavLink>
+          </li>
+          <li>
+            <NavLink to='/signout'>Sign Out</NavLink>
+          </li>
+        </ul>
+      </nav>
   )
 }
 
