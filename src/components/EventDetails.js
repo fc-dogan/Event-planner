@@ -12,8 +12,8 @@ function EventDetails(props) {
       <h3> {selectedEvent.location} </h3>
       <p>{selectedEvent.eventDate} </p>
       <p><em>{selectedEvent.description}</em></p>
-      <button onClick={ onClickingEdit() }>
-      <Link to='editevent'>Edit </Link>
+      <button onClick={ onClickingEdit }>
+      Edit
      </button>
       {/* <button onClick={()=> onClickingDelete(ticket.id) }>Close Ticket</button>
       <hr/> */}
@@ -31,11 +31,5 @@ EventDetails.propTypes = {
 
 
 export default EventDetails
-
-
-
-
-//   
-// 
 
 

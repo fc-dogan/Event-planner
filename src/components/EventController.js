@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
     super(props);
     this.state = {
       // selectedEvent: null,
-      editing: false
+      // editing: false
     };
   }
 
@@ -33,7 +33,9 @@ import { connect } from 'react-redux';
   }
 
   handleEditClicking =() =>{
-    this.setState({editing: true});
+    const { dispatch } = this.props;
+    const action ={type: 'EDITING_EVENT'}
+    dispatch(action);
   }
 
   handleClickToListfromDetail = () =>{
@@ -45,8 +47,9 @@ import { connect } from 'react-redux';
   
   render() {
     let currentlyVisibleState = null;
-    if (this.state.editing ) {      
-      currentlyVisibleState =  <EditEventForm selectedEvent={this.props.selectedEvent}/>;
+    if (this.props.editingEvent ) {      
+      currentlyVisibleState =  <EditEventForm selectedEvent={this.props.selectedEvent}
+      onEditTicket ={this.handleEditClicking}/>;
     }  else if (this.props.selectedEvent!= null) {
       currentlyVisibleState=
       <div>
@@ -73,7 +76,8 @@ import { connect } from 'react-redux';
 }
 const mapStateToProps = state => {
   return {
-    selectedEvent: state.selectedEvent
+    selectedEvent: state.selectedEvent,
+    editingEvent: state.editingEvent
   }
 }
 

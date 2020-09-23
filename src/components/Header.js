@@ -1,10 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
  function Header() {
   return (
-    <div>
+    <React.Fragment>
       <h1>Event Planner</h1>
-    </div>
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/signin'>Sign In</Link>
+        </li>
+      </ul>
+    </React.Fragment>
   )
 }
 

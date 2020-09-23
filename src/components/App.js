@@ -6,15 +6,16 @@ import NewEventForm from './NewEventForm';
 import EventDetails from './EventDetails';
 import EventList from './EventList';
 import EditEventForm from './EditEventForm';
+import Signin from './Signin';
 
 function App() {
   return (
     <Router>
       <Header />
       <Switch>
-        {/* <Route path="/signin">
+        <Route path="/signin">
           <Signin />
-        </Route> */}
+        </Route>
         <Route path="/newevent">
           <NewEventForm />
         </Route>

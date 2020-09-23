@@ -6,10 +6,11 @@ import { useFirestore } from 'react-redux-firebase';
 function EditEventForm(props) {
 
   const firestore = useFirestore();
-  const { selectedEvent } = props;
+  const { selectedEvent, onEditTicket } = props;
 
   function handleEditEventFormSubmission(event){
     event.preventDefault();
+    onEditTicket();
     const propertiesToUpdate = {
             title: event.target.title.value,
             location: event.target.location.value, 
@@ -45,6 +46,11 @@ function EditEventForm(props) {
     </React.Fragment>
   )
 }
+
+EditEventForm.propTypes = {
+  selectedEvent: PropTypes.object,
+  onEditTicket: PropTypes.func
+};
 
 export default EditEventForm
 
