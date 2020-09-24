@@ -5,23 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 function EventDetails(props) {
- const { selectedEvent, onClickingEdit, currentUser } = props;
-  // const firestore = useFirestore();
-  
-  // const handleDeletingEvent =() =>{
-  //   return firestore.delete({collection: 'events', doc: props.id });
-  // }
-
-  // const renderDeleteButton = () =>{
-  //   if(currentUser !== null) {
-  //     return ( 
-  //       <button onClick={handleDeletingEvent}>Delete</button>
-  //     )
-  //   }
-  //   else{
-  //     return "null";
-  //   }
-  // }
+ const { selectedEvent, onClickingEdit } = props;
  
   return (
     <div className="container section event-detail">
