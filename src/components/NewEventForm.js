@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase'
 
-function NewEventForm() {
+function NewEventForm(props) {
 
   const firestore = useFirestore();
 
@@ -15,6 +15,7 @@ function NewEventForm() {
         location: event.target.location.value, 
         eventDate: event.target.eventDate.value,
         description: event.target.description.value,
+        creator: props.creatorOfEvent,
         timeOpen: firestore.FieldValue.serverTimestamp()
       }
     );
@@ -41,6 +42,10 @@ function NewEventForm() {
       </form>
   </React.Fragment>
   )
+}
+
+NewEventForm.prototype ={
+  creatorOfEvent: PropTypes.string
 }
 
 export default NewEventForm;

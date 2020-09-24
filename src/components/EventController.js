@@ -78,7 +78,8 @@ import { Link } from 'react-router-dom';
             <EventList onEventSelection={this.handleChangingSelectedEvent}/>
           </div>
           <div className='col s12 m5 offset-m1'>
-              <NewEventForm />
+              <NewEventForm creatorOfEvent={auth.currentUser.uid} />
+              <Dashboard currentUser = {auth.currentUser} onEventSelection={this.handleChangingSelectedEvent} />
           </div>
         </div>
       </div>
