@@ -64,7 +64,7 @@ import { Link } from 'react-router-dom';
             <div>
               <EditEventForm selectedEvent={this.props.selectedEvent}
                 onEditTicket ={this.handleEditClicking}/>
-              <button onClick ={this.handleClickToListfromDetail} >Return to List</button>
+              {/* <button onClick ={this.handleClickToListfromDetail} >Return to List</button> */}
             </div>   
       }  else if (this.props.selectedEvent!= null) {
         currentlyVisibleState=

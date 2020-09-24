@@ -24,13 +24,17 @@ function Event(props){
   return (
     <React.Fragment>
       <div onClick = {() => props.whenEventClicked(props.id)}>
-        <h3> {props.title}</h3>
-        <h3> {props.location} </h3>
-        <p>{props.eventDate} </p>
-        <p><em>{props.description}</em></p>
-        <p><em>{props.formattedWaitTime}</em></p>
+        <div className="card z-depth-0 event">
+        <span className="card-title ">{props.title}</span>
+        <div className="card-action grey lighten-4 grey-text">
+          <p>Location: {props.location} </p>
+          <p>Date: {props.eventDate} </p>
+          <p>Description: <em>{props.description}</em></p>
+        </div>
+          {renderDeleteButton()}
+        </div>
       </div>
-      {renderDeleteButton()}
+        
       {/* <button>
       <Link to='editevent'>Edit </Link>
       </button> */}
@@ -50,3 +54,11 @@ Event.propTypes = {
 };
 
 export default Event;
+
+{/* <div className="card z-depth-0 project-summary">
+      <div className="card-content grey-text text-darken-3">
+        <span className="card-title ">{project.title}</span>
+        <p>Posted by {project.authorFirstName} {project.authorLastName}</p>
+        <p className="grey-text">{moment(project.createdAt.toDate()).calendar()}</p>
+      </div>
+    </div> */}

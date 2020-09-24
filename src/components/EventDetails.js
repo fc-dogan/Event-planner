@@ -24,22 +24,23 @@ function EventDetails(props) {
   // }
  
   return (
-    <React.Fragment>
-      <h1>Event Details</h1>
-      <h3> {selectedEvent.title}</h3>
-      <h3> {selectedEvent.location} </h3>
-      <p>{selectedEvent.eventDate} </p>
-      <p><em>{selectedEvent.description}</em></p>
-      <button onClick={ onClickingEdit }>
-      Edit
-     </button>
-      {/* {renderDeleteButton()} */}
-      {/* <button onClick={()=> onClickingDelete(ticket.id) }>Close Ticket</button>
-      <hr/> */}
-      {/* <button onClick={selectedEvent.onClickingEditIssue}>Edit Issue</button>
-      <hr/> */}
-    </React.Fragment>
-    
+    <div className="container section event-detail">
+      <h3>Event Details</h3>
+      <div className="card z-depth-o">
+        <div className="card-content">
+          <span className="card-title">{selectedEvent.title}</span>
+          <div className="card-action grey lighten-4 grey-text">
+            <p> {selectedEvent.location} </p>
+            <p>{selectedEvent.eventDate} </p>
+            <p><em>{selectedEvent.description}</em></p>
+          </div>
+          <button onClick={ onClickingEdit } className='btn grey lighten-1 z-depth-0'>
+          Edit
+        </button>
+        </div>
+      </div>
+    </div>
+       
   )
 }
 
