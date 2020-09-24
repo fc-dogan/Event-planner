@@ -3,7 +3,8 @@ import Event from './Event';
 import PropTypes from "prop-types";
 import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 function EventList(props) {
 
   useFirestoreConnect([

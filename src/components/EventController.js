@@ -38,7 +38,6 @@ import { Link } from 'react-router-dom';
     const action2 = { type: "UNSELECT_EVENT"}
     dispatch(action2);
   }
-
   
   render() {
     let currentlyVisibleState = null;
@@ -53,26 +52,31 @@ import { Link } from 'react-router-dom';
     if ((isLoaded(auth)) && (auth.currentUser == null)) {
       return (
         <React.Fragment>
-          <h2>You must be signed in to access the queue.</h2>
+          <h2>You must be signed in </h2>
           <button><Link to='/signin'>Sign In</Link></button>
           <button><Link to='/signup'>Sign up</Link></button>
         </React.Fragment>
       )
     } 
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
-      if (this.props.editingEvent ) {      
-        currentlyVisibleState =  <EditEventForm selectedEvent={this.props.selectedEvent}
-        onEditTicket ={this.handleEditClicking}/>;
+      if (this.props.editingEvent ) {  
+          currentlyVisibleState =
+            <div>
+              <EditEventForm selectedEvent={this.props.selectedEvent}
+                onEditTicket ={this.handleEditClicking}/>
+              <button onClick ={this.handleClickToListfromDetail} >Return to List</button>
+            </div>   
       }  else if (this.props.selectedEvent!= null) {
         currentlyVisibleState=
         <div>
-          <EventDetails selectedEvent= {this.props.selectedEvent}
+          <EventDetails currentUser = {auth.currentUser} selectedEvent= {this.props.selectedEvent}
           onClickingEdit={this.handleEditClicking} />
           <button onClick ={this.handleClickToListfromDetail} >Return to List</button>
         </div> 
       } else {
         currentlyVisibleState =
         <div className='main container'>
+          <h2>All Events</h2>
         <div className='row'>
           <div className='col s12 m6'>
             <EventList onEventSelection={this.handleChangingSelectedEvent}/>

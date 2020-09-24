@@ -22,6 +22,7 @@ function NewEventForm(props) {
   }
   return (
     <React.Fragment>
+      <h2>Create a new event</h2>
       <form onSubmit={addEventToFirestore}>
         <input
           type='text'

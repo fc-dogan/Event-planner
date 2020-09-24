@@ -10,6 +10,16 @@ function Event(props){
   const handleDeletingEvent =() =>{
     return firestore.delete({collection: 'events', doc: props.id });
   }
+   const renderDeleteButton = () =>{
+    if(props.creator === true ) {
+      return ( 
+        <button onClick={handleDeletingEvent}>Delete</button>
+      )
+    }
+    else{
+      return "";
+    }
+  }
 
   return (
     <React.Fragment>
@@ -20,7 +30,7 @@ function Event(props){
         <p><em>{props.description}</em></p>
         <p><em>{props.formattedWaitTime}</em></p>
       </div>
-      <button onClick={handleDeletingEvent}>Delete</button>
+      {renderDeleteButton()}
       {/* <button>
       <Link to='editevent'>Edit </Link>
       </button> */}
@@ -35,7 +45,8 @@ Event.propTypes = {
   description: PropTypes.string,
   id: PropTypes.string,
   formattedWaitTime: PropTypes.string,
-  whenEventClicked: PropTypes.func
+  whenEventClicked: PropTypes.func,
+  creator: PropTypes.bool
 };
 
 export default Event;
